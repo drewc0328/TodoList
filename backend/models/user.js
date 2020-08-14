@@ -12,10 +12,10 @@ const userSchema = new Schema({
         type: String,
         require: true
     },
-    tasks: {
+    tasks: [{
         title: {
             type: String,
-            require: true
+            require: false
         },
         content: {
             type: String,
@@ -24,14 +24,13 @@ const userSchema = new Schema({
         date: {
             type: Date,
             default: Date.now,
-            require: true
+            require: false
         },
         checked: {
             type: Boolean,
-            default: true,
             require: false
         }
-    }
+    }]
 })
 
 module.exports = mongoose.model("User", userSchema);

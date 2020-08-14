@@ -5,16 +5,18 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const HttpError = require("./models/http-error");
+const userRoutes = require("./routes/apiRequests");
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
 
-
 app.get('/', (req, res) => {
     res.send('Todo server up and running.');
 });
+
+app.use("/api/users", userRoutes);
 
 //const server = http.createServer(app);
 
