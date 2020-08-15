@@ -37,6 +37,34 @@ const Login = (props) => {
         }
     }
 
+    const signupHandler = async () => {
+        let response;
+        try {
+            response = await fetch("http://localhost:5000/api/users/createUser", {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: emailInput,
+                    password: passwordInput
+                })
+            })
+
+            const responseData = await response.json();
+            if (!response.ok) {
+                console.log("The entered credential's are not correct")
+            }
+
+            setWarningMessage(responseData.message);
+            const uid = responseData.user._id;
+            props.setUserID(uid);
+            setLoggedIn(true);
+        } catch (err) {
+            console.log(err.message || "Something went wrong, please try again");
+        }
+    }
+
 
     return(
         <div className="login">
@@ -52,7 +80,7 @@ const Login = (props) => {
             </div>
             <div className="buttons">
                 <button className="login-button" onClick={loginHandler}>Login</button>
-                {/* <button className="signup-button" onClick={signupHandler}>Signup</button> */}
+                <button className="signup-button" onClick={signupHandler}>Signup</button>
             </div>
             <div>
                 {warningMessage}
