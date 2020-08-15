@@ -13,7 +13,7 @@ router.post('/login', userController.login);
 
 router.delete('/deleteUser', userController.deleteUser);
 
-router.post("/deleteTask", userController.deleteTask);
+router.delete("/deleteTask", userController.deleteTask);
 
 router.post("/checkTask", userController.checkTask);
 
