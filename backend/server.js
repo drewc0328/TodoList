@@ -46,5 +46,7 @@ mongoose.connect("mongodb+srv://Drew:bellabella444@cluster0.j0suz.mongodb.net/to
     console.log("MongoDB server connected!")
 }).catch(err => console.log(err))
 
+mongoose.set('useCreateIndex', true);
+
 
 

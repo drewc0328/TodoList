@@ -9,4 +9,16 @@ router.post('/createUser', userController.createUser);
 
 router.post('/createTask', userController.createTask);
 
+router.post('/login', userController.login);
+
+router.delete('/deleteUser', userController.deleteUser);
+
+router.post("/deleteTask", userController.deleteTask);
+
+router.post("/checkTask", userController.checkTask);
+
+router.get("/getUser/:id", userController.getUser);
+
+router.patch("/editTask", userController.editTask);
+
 module.exports = router;
